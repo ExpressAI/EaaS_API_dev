@@ -10,6 +10,8 @@ To use the API, use the following.
 from eaas_api import Client
 client = Client()
 
+inputs = [{"src": "This is source.", "refs": ["This is reference one", "This is reference two"], "hypo": "This is hypothesis"}]
+metrics = ["bleu", "chrf"] # Can be None for simplicity if you consider using all metrics
 score_dic = client.score(inputs, metrics) # inputs is a list of Dict, metrics is metric list
 ```
 
