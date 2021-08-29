@@ -40,3 +40,8 @@ The output is like
 - [ ] 完善功能
 - [ ] 只给aws的ip (起一个api.eaas类似这样的域名)，aws后期二次转发到cmu服务器
 - [ ] 打包成package
+- [ ] metric corpus-level指标计算; BLEU corpus-level的计算检查（是否其他metric也有类似的）；我们可能要设计下返回结果的json格式
+- [ ] 我们弄个文档，总结每个指标的默认预处理方法，超参数使用，考虑是否预留个接口给用户设置
+- [ ] Confidence interval计算功能
+- [ ] Fine-grained analysis功能
+- [ ] 优化API访问效率
