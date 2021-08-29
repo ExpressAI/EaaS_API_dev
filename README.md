@@ -12,6 +12,8 @@ client = Client()
 
 inputs = [{"src": "This is source.", "refs": ["This is reference one", "This is reference two"], "hypo": "This is hypothesis"}]
 metrics = ["bleu", "chrf"] # Can be None for simplicity if you consider using all metrics
+
+# To see the full metric list, use client.metrics
 score_dic = client.score(inputs, metrics) # inputs is a list of Dict, metrics is metric list
 ```
 
