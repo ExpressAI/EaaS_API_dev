@@ -1,5 +1,9 @@
 # EaaS_API
 
+## Documentation
+[here](docs/build/html/index.html)
+
+## Usage
 To install the API, simply run
 ```bash
 pip install eaas_api
