@@ -1,7 +1,7 @@
 # EaaS_API
 
 ## Documentation
-[here](docs/build/html/index.html)
+Documentation at https://expressai.github.io/EaaS_API/
 
 ## Usage
 To install the API, simply run
