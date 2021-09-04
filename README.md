@@ -10,6 +10,7 @@ pip install eaas_api
 ```
 
 To use the API, use the following.
+
 ```python
 from eaas_api import Client
 client = Client()

@@ -23,3 +23,5 @@ class TestMetrics(unittest.TestCase):
         inputs = read_jsonlines_to_list(input_file)
         res = client.score(inputs)
         print(res)
+
+
