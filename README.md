@@ -1,7 +1,7 @@
 # EaaS_API
 
 ## Documentation
-Documentation at https://expressai.github.io/EaaS_API/
+Setup can be found [here](https://github.com/yyy-Apple/sphinxdoc-test/blob/master/sphinx.md). Documentation at https://expressai.github.io/EaaS_API/
 
 ## Usage
 To install the API, simply run
