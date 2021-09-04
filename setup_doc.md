@@ -1,7 +1,7 @@
 # Publishing sphinx-generated docs on github
 
 References:<br> 
-1. https://daler.github.io/sphinxdoc-test/includeme.html
+1. https://yyy-Apple.github.io/sphinxdoc-test/includeme.html
 2. https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
 
 ## Protocal
@@ -14,7 +14,7 @@ git init
 touch README
 git add README
 git commit -m 'first commit'
-git remote add origin git@github.com:daler/sphinxdoc-test.git
+git remote add origin git@github.com:yyy-Apple/sphinxdoc-test.git
 git push origin master
 ```
 Throughout this document, I’ll refer to this as the ‘main repo’ or the ‘code dir’.
@@ -42,7 +42,7 @@ cd sphinxdoc-test-docs
 
 Then clone the repo you just set up on github into a dir called `html` (which will be created automatically with the following command):
 ```
-git clone git@github.com:daler/sphinxdoc-test.git html
+git clone git@github.com:yyy-Apple/sphinxdoc-test.git html
 cd html
 ```
 The `html` dir now has a clone of the repo.
@@ -129,7 +129,7 @@ And then publish the newly built docs:
 ```
 git push origin gh-pages
 ```
-Anyway, now you can view your new pages on `http://<user>.github.com/<repo>`. So in this case, it’s http://daler.github.com/sphinxdoc-test.
+Anyway, now you can view your new pages on `http://<user>.github.com/<repo>`. So in this case, it’s http://yyy-Apple.github.com/sphinxdoc-test.
 
 
 ## Add a .nojekyll file
