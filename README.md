@@ -40,8 +40,12 @@ The output is like
   "rouge_l": [0.5, 0.5, 0.33333]
 }
 ```
+## Short-term TODO
+- [ ] Change to the one sample at a time mode
+- [ ] Think how to deal with metrics like BLEU which cannot get corpus-level easily.
 
-## TODO
+
+## Long-term TODO
 - [ ] 完善功能
 - [ ] 只给aws的ip (起一个api.eaas类似这样的域名)，aws后期二次转发到cmu服务器
 - [ ] 打包成package
