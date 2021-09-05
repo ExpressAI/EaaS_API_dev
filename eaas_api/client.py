@@ -10,8 +10,8 @@ class Client:
         # self.end_point = "http://18.224.144.134/"
         self.end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
         self.valid_metrics = [
-            "bart_score_src",
-            "bart_score_ref",
+            "bart_score_summ",
+            "bart_score_mt",
             "bert_score",
             "bleu",
             "chrf",
