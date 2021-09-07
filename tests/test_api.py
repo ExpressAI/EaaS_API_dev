@@ -19,6 +19,8 @@ def read_jsonlines_to_list(file_name):
 class TestMetrics(unittest.TestCase):
     def test_api(self):
         client = Client()
+        client.load_config("config.json")
+
         input_file = os.path.join(curr_dir, "inputs", "multi_ref.jsonl")
         inputs = read_jsonlines_to_list(input_file)
         res = client.score(inputs)
