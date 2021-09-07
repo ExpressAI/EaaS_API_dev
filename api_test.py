@@ -1,10 +1,6 @@
 # %%
 from eaas_api import Client
 import jsonlines
-from pathlib import Path
-import os
-
-curr_dir = Path(__file__).parent
 
 
 def read_jsonlines_to_list(file_name):
@@ -16,6 +12,32 @@ def read_jsonlines_to_list(file_name):
 
 
 client = Client()
-input_file = os.path.join(curr_dir, "tests", "inputs", "multi_ref.jsonl")
+client.load_config("config.json")  # you can change the settings for each metric in `config.json`
+
+# To see supported metrics
+print(client.metrics)
+
+# %%
+inputs = [{"src": "This is the source.", "refs": ["This is the reference one.", "This is the reference two."],
+           "hypo": "This is the generated hypothesis."}]
+metrics = ["bleu", "chrf"]  # Can be None for simplicity if you consider using all metrics
+
+# To see the full metric list, use client.metrics
+score_dic = client.score(inputs, metrics)  # inputs is a list of Dict, metrics is metric list
+# %%
+input_file = "./tests/inputs/multi_ref.jsonl"
 inputs = read_jsonlines_to_list(input_file)
 res = client.score(inputs)
+
+inputs = [{"src": "This is the source.",
+           "refs": ["This is the reference one.", "This is the reference two."],
+           "hypo": "This is the generated hypothesis."}]
+
+# %%
+inputs = [{"src": "This is the source.",
+           "refs": ["This is the reference one.", "This is the reference two."],
+           "hypo": "This is the generated hypothesis."}]
+metrics = ["bleu", "chrf"] # Can be None for simplicity if you consider using all metrics
+
+# To see the full metric list, use client.metrics
+score_dic = client.score(inputs, metrics) # inputs is a list of Dict, metrics is metric list

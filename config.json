@@ -1,0 +1,35 @@
+{
+  "bart_score_summ": {
+
+  },
+  "bart_score_mt": {
+
+  },
+  "bert_score": {
+
+  },
+  "bleu": {
+
+  },
+  "chrf": {
+
+  },
+  "comet": {
+
+  },
+  "comet_qe": {
+
+  },
+  "mover_score": {
+
+  },
+  "prism": {
+
+  },
+  "prism_qe": {
+
+  },
+  "rouge": {
+
+  }
+}

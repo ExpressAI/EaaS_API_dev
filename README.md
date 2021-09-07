@@ -9,13 +9,22 @@ To install the API, simply run
 pip install eaas_api
 ```
 
-To use the API, use the following.
+To use the API, run the following.
 
 ```python
 from eaas_api import Client
 client = Client()
+client.load_config("config.json")  # you can change the settings for each metric in `config.json`
 
-inputs = [{"src": "This is source.", "refs": ["This is reference one", "This is reference two"], "hypo": "This is hypothesis"}]
+# To see supported metrics
+print(client.metrics)
+```
+
+To use this API for scoring, you need to format your input as list of dictionary. Each dictionary consists of `src` (string, optional), `refs` (list of string, optional) and `hypo` (string, required). `src` and `refs` are optional based on the metrics you want to use. Below is a simple example.
+```
+inputs = [{"src": "This is the source.", 
+           "refs": ["This is the reference one.", "This is the reference two."],
+           "hypo": "This is the generated hypothesis."}]
 metrics = ["bleu", "chrf"] # Can be None for simplicity if you consider using all metrics
 
 # To see the full metric list, use client.metrics
@@ -23,27 +32,16 @@ score_dic = client.score(inputs, metrics) # inputs is a list of Dict, metrics is
 ```
 
 The output is like
-```json
+```
 {
-  "bart_score_ref": [-3.5342050790786743, -3.4178476333618164, -3.510450601577759], 
-  "bart_score_src": [-2.707853078842163, -2.8234612941741943, -2.7045414447784424], 
-  "bert_score": [0.9365812540054321, 0.9354045987129211, 0.9317589402198792], 
-  "bleu": [11.415938068117505, 11.415938068117505, 10.62372743739878], 
-  "chrf": [20.551294428815364, 20.616751017358233, 20.269036024315586], 
-  "comet": [-0.7960345149040222, -0.2067447006702423, -0.19570434093475342], 
-  "comet_qe": [0.0007512419251725078, 0.00030300000798888505, 9.400899580214173e-05], 
-  "mover_score": [0.09792998195051472, 0.3416541257804614, 0.43049775930857526], 
-  "prism": [-4.089383602142334, -3.996654510498047, -4.238746643066406], 
-  "prism_qe": [-2.527888774871826, -2.4609158039093018, -2.5541555881500244], 
-  "rouge_1": [0.5, 0.5, 0.33333], 
-  "rouge_2": [0.2, 0.2, 0.2], 
-  "rouge_l": [0.5, 0.5, 0.33333]
+  'bleu': [32.46679154750991],  # Sample-level scores. A list of scores one for each sample.
+  'corpus_bleu': 32.46679154750991, # Corpus-level score.
+  'chrf': [38.56890099861521],
+  'corpus_chrf': 38.56890099861521
 }
 ```
 ## Short-term TODO
-- [ ] Change to the one sample at a time mode
-- [ ] Think how to deal with metrics like BLEU which cannot get corpus-level easily.
-
+- [ ] Write config.json, add backend support.
 
 ## Long-term TODO
 - [ ] 完善功能
