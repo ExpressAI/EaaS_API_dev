@@ -6,22 +6,17 @@ Setup can be found [here](https://github.com/yyy-Apple/sphinxdoc-test/blob/maste
 ## Usage
 To install the API, simply run
 ```bash
-pip install eaas_api
+pip install eaas
 ```
 
 To use the API, run the following.
 
 ```python
-from eaas_api import Client
+from eaas import Client
 client = Client()
-client.load_config("config.json")  # you can change the settings for each metric in `config.json`
 
-# To see supported metrics
-print(client.metrics)
-```
+# To use this API for scoring, you need to format your input as list of dictionary. Each dictionary consists of `src` (string, optional), `refs` (list of string, optional) and `hypo` (string, required). `src` and `refs` are optional based on the metrics you want to use. Please do not conduct any preprocessing on `src`, `refs` or `hypo`, we expect normal-cased detokenized texts. All preprocessing steps are taken by the metrics. Below is a simple example.
 
-To use this API for scoring, you need to format your input as list of dictionary. Each dictionary consists of `src` (string, optional), `refs` (list of string, optional) and `hypo` (string, required). `src` and `refs` are optional based on the metrics you want to use. Please do not conduct any preprocessing on `src`, `refs` or `hypo`, we expect normal-cased detokenized texts. All preprocessing steps are taken by the metrics. Below is a simple example.
-```python
 inputs = [{"src": "This is the source.", 
            "refs": ["This is the reference one.", "This is the reference two."],
            "hypo": "This is the generated hypothesis."}]

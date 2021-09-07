@@ -1,5 +1,5 @@
 # %%
-from eaas_api import Client
+from eaas import Client
 import jsonlines
 from pathlib import Path
 import os

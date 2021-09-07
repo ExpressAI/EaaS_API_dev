@@ -41,7 +41,7 @@ class Client:
         return self._valid_metrics
 
     def score(self, inputs: List[Dict], metrics=None):
-        assert self._config is not None, "You should use load_config first to load metric configurations."
+        # assert self._config is not None, "You should use load_config first to load metric configurations."
 
         if metrics is None:
             metrics = self._valid_metrics
