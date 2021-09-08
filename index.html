@@ -177,9 +177,44 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <div class="section" id="welcome-to-evaluation-as-a-service-api-s-documentation">
-<h1>Welcome to Evaluation as a Service API’s documentation!<a class="headerlink" href="#welcome-to-evaluation-as-a-service-api-s-documentation" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="welcome-to-eaas-api-s-documentation">
+<h1>Welcome to EaaS API’s documentation!<a class="headerlink" href="#welcome-to-eaas-api-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
+</div>
+<p>EaaS stands for “Evaluation as a Service”. It is an open-source framework for facilitating evaluations for various NLP tasks. It offers a wide variety of functionalities including</p>
+<ul class="simple">
+<li><p>Basic scoring functionality for system outputs.</p></li>
+<li><p>Fine-grained evaluation</p></li>
+</ul>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To install EaaS, simply run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">eaas</span>
+</pre></div>
+</div>
+<p>To use the API, run the following as a simple example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eaas</span> <span class="k">import</span> <span class="n">Client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+
+<span class="c1"># To use this API for scoring, you need to format your input as list of dictionary. Each dictionary consists of `src` (string, optional), `refs` (list of string, optional) and `hypo` (string, required). `src` and `refs` are optional based on the metrics you want to use. Please do not conduct any preprocessing on `src`, `refs` or `hypo`, we expect normal-cased detokenized texts. All preprocessing steps are taken by the metrics. Below is a simple example.</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"src"</span><span class="p">:</span> <span class="s2">"This is the source."</span><span class="p">,</span>
+           <span class="s2">"refs"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"This is the reference one."</span><span class="p">,</span> <span class="s2">"This is the reference two."</span><span class="p">],</span>
+           <span class="s2">"hypo"</span><span class="p">:</span> <span class="s2">"This is the generated hypothesis."</span><span class="p">}]</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"bleu"</span><span class="p">,</span> <span class="s2">"chrf"</span><span class="p">]</span> <span class="c1"># Can be None for simplicity if you consider using all metrics</span>
+
+<span class="n">score_dic</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span> <span class="c1"># inputs is a list of Dict, metrics is metric list</span>
+</pre></div>
+</div>
+<p>The output is like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s1">'bleu'</span><span class="p">:</span> <span class="p">[</span><span class="mf">32.46679154750991</span><span class="p">],</span>  <span class="c1"># Sample-level scores. A list of scores one for each sample.</span>
+  <span class="s1">'corpus_bleu'</span><span class="p">:</span> <span class="mf">32.46679154750991</span><span class="p">,</span> <span class="c1"># Corpus-level score.</span>
+  <span class="s1">'chrf'</span><span class="p">:</span> <span class="p">[</span><span class="mf">38.56890099861521</span><span class="p">],</span>
+  <span class="s1">'corpus_chrf'</span><span class="p">:</span> <span class="mf">38.56890099861521</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -235,7 +270,10 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to Evaluation as a Service API’s documentation!</a></li>
+<li><a class="reference internal" href="#">Welcome to EaaS API’s documentation!</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
