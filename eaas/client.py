@@ -62,6 +62,7 @@ class Client:
             response = requests.post(url=self._end_point, json=json.dumps(data))
             rjson = response.json()
             scores = rjson["scores"]
+            assert len(scores["bleu"]) == inputs_len
             final_score_dic["bleu"] = scores["bleu"]
             final_score_dic["corpus_bleu"] = scores["corpus_bleu"]
 
@@ -73,6 +74,7 @@ class Client:
             response = requests.post(url=self._end_point, json=json.dumps(data))
             rjson = response.json()
             scores = rjson["scores"]
+            assert len(scores["chrf"]) == inputs_len
             final_score_dic["chrf"] = scores["chrf"]
             final_score_dic["corpus_chrf"] = scores["corpus_chrf"]
 
