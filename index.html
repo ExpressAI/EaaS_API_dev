@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Supported Analysis" href="analysis.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="installation.html" />
 
     <meta name="generator" content="sphinx-4.1.2, furo 2021.09.08"/>
         <title>Evaluation as a Service API 0.1 documentation</title>
@@ -155,8 +155,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="analysis.html">Supported Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#existing-metrics">Existing Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Supported Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Supported Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library.html">Library Reference</a></li>
 </ul>
 
@@ -186,16 +188,27 @@
         <article role="main">
           <section id="welcome-to-eaas-api-s-documentation">
 <h1>Welcome to EaaS API’s documentation!<a class="headerlink" href="#welcome-to-eaas-api-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>EaaS stands for “Evaluation as a Service”. It is an open-source framework for facilitating evaluations for various NLP tasks. It offers a wide variety of functionalities including</p>
+<ul class="simple">
+<li><p>Basic scoring functionality for system outputs.</p></li>
+<li><p>Fine-grained evaluation</p></li>
+<li><p>To be continued</p></li>
+</ul>
+</section>
+<section id="content">
+<h1>Content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="analysis.html">Supported Analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="analysis.html#fine-grained-evaluation">Fine-grained Evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysis.html#confidence-interval">Confidence Interval</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#existing-metrics">Existing Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Supported Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html#bleu">BLEU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html#rouge">ROUGE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Supported Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html#fine-grained-evaluation">Fine-grained Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html#confidence-interval">Confidence Interval</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="library.html">Library Reference</a><ul>
@@ -205,63 +218,9 @@
 </li>
 </ul>
 </div>
-<p>EaaS stands for “Evaluation as a Service”. It is an open-source framework for facilitating evaluations for various NLP tasks. It offers a wide variety of functionalities including</p>
-<ul class="simple">
-<li><p>Basic scoring functionality for system outputs.</p></li>
-<li><p>Fine-grained evaluation</p></li>
-<li><p>To be continued</p></li>
-</ul>
 </section>
 <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>To install EaaS, simply run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">eaas</span>
-</pre></div>
-</div>
-<p>To use the API, run the following as a simple example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eaas</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
-
-<span class="c1"># To use this API for scoring, you need to format your input as list of dictionary. Each dictionary consists of `src` (string, optional), `refs` (list of string, optional) and `hypo` (string, required). `src` and `refs` are optional based on the metrics you want to use. Please do not conduct any preprocessing on `src`, `refs` or `hypo`, we expect normal-cased detokenized texts. All preprocessing steps are taken by the metrics. Below is a simple example.</span>
-
-<span class="n">inputs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"src"</span><span class="p">:</span> <span class="s2">"This is the source."</span><span class="p">,</span>
-           <span class="s2">"refs"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"This is the reference one."</span><span class="p">,</span> <span class="s2">"This is the reference two."</span><span class="p">],</span>
-           <span class="s2">"hypo"</span><span class="p">:</span> <span class="s2">"This is the generated hypothesis."</span><span class="p">}]</span>
-<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"bleu"</span><span class="p">,</span> <span class="s2">"chrf"</span><span class="p">]</span> <span class="c1"># Can be None for simplicity if you consider using all metrics</span>
-
-<span class="n">score_dic</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span> <span class="c1"># inputs is a list of Dict, metrics is metric list</span>
-</pre></div>
-</div>
-<p>The output is like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s1">'bleu'</span><span class="p">:</span> <span class="p">[</span><span class="mf">32.46679154750991</span><span class="p">],</span>  <span class="c1"># Sample-level scores. A list of scores one for each sample.</span>
-  <span class="s1">'corpus_bleu'</span><span class="p">:</span> <span class="mf">32.46679154750991</span><span class="p">,</span> <span class="c1"># Corpus-level score.</span>
-  <span class="s1">'chrf'</span><span class="p">:</span> <span class="p">[</span><span class="mf">38.56890099861521</span><span class="p">],</span>
-  <span class="s1">'corpus_chrf'</span><span class="p">:</span> <span class="mf">38.56890099861521</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="existing-metrics">
-<h1>Existing Metrics<a class="headerlink" href="#existing-metrics" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><cite>bart_score_summ</cite>: This is used for text summarization.</p></li>
-<li><dl class="field-list simple">
-<dt class="field-odd">bart_score_mt</dt>
-<dd class="field-odd"><p>This is used for machine translation.</p>
-</dd>
-</dl>
-</li>
-<li><p>“bert_score”:</p></li>
-<li><p>“bleu”:</p></li>
-<li><p>“chrf”:</p></li>
-<li><p>“comet”:</p></li>
-<li><p>“comet_qe”:</p></li>
-<li><p>“mover_score”:</p></li>
-<li><p>“prism”:</p></li>
-<li><p>“prism_qe”:</p></li>
-<li><p>“rouge”:</p></li>
-</ul>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -277,12 +236,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="analysis.html">
+          <a class="next-page" href="installation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Supported Analysis</div>
+                <div class="title">Installation</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -316,8 +275,8 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Welcome to EaaS API’s documentation!</a></li>
+<li><a class="reference internal" href="#content">Content</a></li>
 <li><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li><a class="reference internal" href="#existing-metrics">Existing Metrics</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
