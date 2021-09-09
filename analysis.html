@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="BLEU" href="metrics.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <meta name="generator" content="sphinx-4.1.2, furo 2021.09.08"/>
-        <title>Evaluation as a Service API 0.1 documentation</title>
+        <title>Fine-grained Evaluation - Evaluation as a Service API 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=c7c65a82b42f6b978e58466c1e9ef2509836d916" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">Evaluation as a Service API 0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">Evaluation as a Service API 0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">Evaluation as a Service API 0.1 documentation</span>
@@ -183,79 +183,12 @@
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-eaas-api-s-documentation">
-<h1>Welcome to EaaS API’s documentation!<a class="headerlink" href="#welcome-to-eaas-api-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="metrics.html">BLEU</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metrics.html#rouge">ROUGE</a></li>
-</ul>
-</div>
-<p>EaaS stands for “Evaluation as a Service”. It is an open-source framework for facilitating evaluations for various NLP tasks. It offers a wide variety of functionalities including</p>
-<ul class="simple">
-<li><p>Basic scoring functionality for system outputs.</p></li>
-<li><p>Fine-grained evaluation</p></li>
-<li><p>To be continued</p></li>
-</ul>
-<section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>To install EaaS, simply run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">eaas</span>
-</pre></div>
-</div>
-<p>To use the API, run the following as a simple example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eaas</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
-
-<span class="c1"># To use this API for scoring, you need to format your input as list of dictionary. Each dictionary consists of `src` (string, optional), `refs` (list of string, optional) and `hypo` (string, required). `src` and `refs` are optional based on the metrics you want to use. Please do not conduct any preprocessing on `src`, `refs` or `hypo`, we expect normal-cased detokenized texts. All preprocessing steps are taken by the metrics. Below is a simple example.</span>
-
-<span class="n">inputs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"src"</span><span class="p">:</span> <span class="s2">"This is the source."</span><span class="p">,</span>
-           <span class="s2">"refs"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"This is the reference one."</span><span class="p">,</span> <span class="s2">"This is the reference two."</span><span class="p">],</span>
-           <span class="s2">"hypo"</span><span class="p">:</span> <span class="s2">"This is the generated hypothesis."</span><span class="p">}]</span>
-<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"bleu"</span><span class="p">,</span> <span class="s2">"chrf"</span><span class="p">]</span> <span class="c1"># Can be None for simplicity if you consider using all metrics</span>
-
-<span class="n">score_dic</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span> <span class="c1"># inputs is a list of Dict, metrics is metric list</span>
-</pre></div>
-</div>
-<p>The output is like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s1">'bleu'</span><span class="p">:</span> <span class="p">[</span><span class="mf">32.46679154750991</span><span class="p">],</span>  <span class="c1"># Sample-level scores. A list of scores one for each sample.</span>
-  <span class="s1">'corpus_bleu'</span><span class="p">:</span> <span class="mf">32.46679154750991</span><span class="p">,</span> <span class="c1"># Corpus-level score.</span>
-  <span class="s1">'chrf'</span><span class="p">:</span> <span class="p">[</span><span class="mf">38.56890099861521</span><span class="p">],</span>
-  <span class="s1">'corpus_chrf'</span><span class="p">:</span> <span class="mf">38.56890099861521</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+          <p>Supported Analysis</p>
+<section id="fine-grained-evaluation">
+<h1>Fine-grained Evaluation<a class="headerlink" href="#fine-grained-evaluation" title="Permalink to this headline">¶</a></h1>
 </section>
-<section id="existing-metrics">
-<h2>Existing Metrics<a class="headerlink" href="#existing-metrics" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><cite>bart_score_summ</cite>: This is used for text summarization.</p></li>
-<li><dl class="field-list simple">
-<dt class="field-odd">bart_score_mt</dt>
-<dd class="field-odd"><p>This is used for machine translation.</p>
-</dd>
-</dl>
-</li>
-<li><p>“bert_score”:</p></li>
-<li><p>“bleu”:</p></li>
-<li><p>“chrf”:</p></li>
-<li><p>“comet”:</p></li>
-<li><p>“comet_qe”:</p></li>
-<li><p>“mover_score”:</p></li>
-<li><p>“prism”:</p></li>
-<li><p>“prism_qe”:</p></li>
-<li><p>“rouge”:</p></li>
-</ul>
-</section>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<section id="confidence-interval">
+<h1>Confidence Interval<a class="headerlink" href="#confidence-interval" title="Permalink to this headline">¶</a></h1>
 </section>
 
         </article>
@@ -263,15 +196,7 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="metrics.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">BLEU</div>
-              </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
-            </a>
+          
           
         </div>
 
@@ -281,7 +206,7 @@
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
-            <a class="muted-link" href="_sources/index.rst.txt"
+            <a class="muted-link" href="_sources/analysis.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -301,12 +226,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to EaaS API’s documentation!</a><ul>
-<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li><a class="reference internal" href="#existing-metrics">Existing Metrics</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">Fine-grained Evaluation</a></li>
+<li><a class="reference internal" href="#confidence-interval">Confidence Interval</a></li>
 </ul>
 
           </div>
