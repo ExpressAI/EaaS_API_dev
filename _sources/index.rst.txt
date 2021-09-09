@@ -18,16 +18,12 @@ Content
    :maxdepth: 2
 
    installation
-   analysis
    metrics
+   analysis
    library
 
 
 
-
-
-Getting Started
-=======================================================
 
 
 
