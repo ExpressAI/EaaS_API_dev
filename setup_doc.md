@@ -4,7 +4,7 @@ References:<br>
 1. https://yyy-Apple.github.io/sphinxdoc-test/includeme.html
 2. https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
 
-## Protocal
+
 
 ## Install sphinx
 ```shell
