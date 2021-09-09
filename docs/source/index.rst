@@ -48,6 +48,22 @@ The output is like::
      'corpus_chrf': 38.56890099861521
    }
 
+
+Existing Metrics
+-------------------
+* "bart_score_summ":
+* "bart_score_mt":
+* "bert_score":
+* "bleu":
+* "chrf":
+* "comet":
+* "comet_qe":
+* "mover_score":
+* "prism":
+* "prism_qe":
+* "rouge":
+
+
 Indices and tables
 ==================
 
