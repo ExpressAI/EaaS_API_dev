@@ -9,8 +9,9 @@ Welcome to EaaS API's documentation!
 .. toctree::
    :maxdepth: 2
 
-   metrics
    analysis
+   metrics
+
 
 
 
