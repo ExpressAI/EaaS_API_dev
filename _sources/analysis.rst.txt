@@ -1,4 +1,7 @@
+.. _analysis:
 Supported Analysis
+==============
+
 
 
 
