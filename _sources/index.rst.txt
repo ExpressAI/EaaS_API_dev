@@ -23,7 +23,7 @@ EaaS stands for "Evaluation as a Service". It is an open-source framework for fa
 * To be continued
 
 Getting Started
-----------------------
+=======================================================
 To install EaaS, simply run::
 
    pip install eaas
@@ -56,7 +56,7 @@ The output is like::
 
 
 Existing Metrics
--------------------
+=======================================================
 * `bart_score_summ`: This is used for text summarization.
 * :bart_score_mt: This is used for machine translation.
 * "bert_score":
