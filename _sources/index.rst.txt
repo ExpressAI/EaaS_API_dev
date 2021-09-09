@@ -20,7 +20,7 @@ EaaS stands for "Evaluation as a Service". It is an open-source framework for fa
 * To be continued
 
 Getting Started
-------------
+----------------------
 To install EaaS, simply run::
 
    pip install eaas
