@@ -10,6 +10,7 @@ Welcome to EaaS API's documentation!
    :maxdepth: 2
 
    metrics
+   analysis
 
 
 
