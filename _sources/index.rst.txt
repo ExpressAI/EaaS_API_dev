@@ -10,7 +10,8 @@ Welcome to EaaS API's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   includeme
+   metrics
+
 
 
 EaaS stands for "Evaluation as a Service". It is an open-source framework for facilitating evaluations for various NLP tasks. It offers a wide variety of functionalities including
@@ -55,7 +56,7 @@ The output is like::
 Existing Metrics
 -------------------
 * `bart_score_summ`: This is used for text summarization.
-* "bart_score_mt": This is used for machine translation.
+* :bart_score_mt: This is used for machine translation.
 * "bert_score":
 * "bleu":
 * "chrf":
