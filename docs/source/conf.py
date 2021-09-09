@@ -31,8 +31,26 @@ release = '0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "furo"
+    "furo",
 ]
+# extensions = [
+#     "sphinx.ext.autodoc",
+#     # 'sphinx.ext.doctest',
+#     "sphinx.ext.intersphinx",
+#     "sphinx.ext.todo",
+#     "sphinx.ext.coverage",
+#     "sphinx.ext.mathjax",
+#     "sphinx.ext.viewcode",
+#     "sphinx.ext.githubpages",
+#     "sphinx.ext.napoleon",
+#     "recommonmark",
+#     #'sphinxarg.ext',
+#     #'m2r',
+#     # 'sphinx-issues',
+#     # 'pytest-sphinx',
+#     "sphinx_markdown_tables",
+#     "sphinx.ext.autosectionlabel",
+# ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
