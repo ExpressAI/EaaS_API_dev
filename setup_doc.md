@@ -9,6 +9,8 @@ References:<br>
 ## Install sphinx
 ```shell
 pip install Sphinx
+# theme DIY 
+pip install furo 
 ```
 
 ## Set up main repository
