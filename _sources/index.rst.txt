@@ -11,6 +11,7 @@ Welcome to EaaS API's documentation!
 
    analysis
    metrics
+   library
 
 
 
