@@ -21,7 +21,7 @@ class TestMetrics(unittest.TestCase):
         client = Client()
         client.load_config("config.json")
 
-        input_file = os.path.join(curr_dir, "inputs", "multi_ref.jsonl")
+        input_file = os.path.join(curr_dir, "inputs", "multi_references.jsonl")
         inputs = read_jsonlines_to_list(input_file)
         res = client.score(inputs)
         print(res)
