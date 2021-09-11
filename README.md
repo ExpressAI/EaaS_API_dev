@@ -1,7 +1,7 @@
 # EaaS_API
 
 ## Documentation
-Setup can be found [here](https://github.com/yyy-Apple/sphinxdoc-test/blob/master/sphinx.md). Documentation at https://expressai.github.io/EaaS_API_dev/. Some references for writing docs can refer to
+Documentation at https://expressai.github.io/EaaS_API_dev/. Some references for writing docs can refer to
 - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-primer
 - https://sphinx-tutorial.readthedocs.io/step-1/
 
