@@ -6,13 +6,23 @@
 
   },
   "bert_score": {
-
+    "idf": false,
+    "rescale_with_baseline": false
   },
   "bleu": {
-
+    "smooth_method": "exp",
+    "smooth_value": null,
+    "force": false,
+    "lowercase": false,
+    "tokenize": "13a",
+    "use_effective_order": false
   },
   "chrf": {
-
+    "char_order": 6,
+    "word_order": 0,
+    "beta": 2,
+    "remove_whitespace": true,
+    "eps_smoothing": false
   },
   "comet": {
 
@@ -21,13 +31,15 @@
 
   },
   "mover_score": {
-
+    "remove_stopwords": true,
+    "n_gram": 1,
+    "remove_subwords": true
   },
   "prism": {
-
+    "temperature": 1.0
   },
   "prism_qe": {
-
+    "temperature": 1.0
   },
   "rouge": {
 

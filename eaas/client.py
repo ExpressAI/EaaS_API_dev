@@ -94,7 +94,8 @@ class Client:
         if "bleu" in metrics:
             data = {
                 "inputs": inputs,
-                "metrics": ["bleu"]
+                "metrics": ["bleu"],
+                "config": self._config
             }
             response = requests.post(url=self._score_end_point, json=json.dumps(data))
             rjson = response.json()
@@ -106,7 +107,8 @@ class Client:
         if "chrf" in metrics:
             data = {
                 "inputs": inputs,
-                "metrics": ["chrf"]
+                "metrics": ["chrf"],
+                "config": self._config
             }
             response = requests.post(url=self._score_end_point, json=json.dumps(data))
             rjson = response.json()
@@ -120,7 +122,8 @@ class Client:
         for i in trange(0, len(inputs), BATCH_SIZE, desc="Calculating scores."):
             data = {
                 "inputs": inputs[i: i + BATCH_SIZE],
-                "metrics": metrics
+                "metrics": metrics,
+                "config": self._config
             }
 
             response = requests.post(url=self._score_end_point, json=json.dumps(data))
