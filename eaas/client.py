@@ -5,7 +5,7 @@ import warnings
 from tqdm import trange
 from collections import defaultdict
 import os
-
+from time import gmtime, strftime
 
 BATCH_SIZE = 100
 
@@ -14,7 +14,8 @@ class Client:
     def __init__(self):
         """ A client wrapper """
         # self.end_point = "http://18.224.144.134/"
-        self._end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
+        self._record_end_point = "http://piaget.lti.cs.cmu.edu:6666/record"
+        self._score_end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
         self._valid_metrics = [
             "bart_score_summ",
             "bart_score_mt",
@@ -40,6 +41,35 @@ class Client:
     def metrics(self):
         return self._valid_metrics
 
+    def log_request(self, inputs, metrics):
+        """ Log the metadata of this request. """
+        def word_count(l):
+            """ count words in a list (or list of list)"""
+            c = 0
+            for x_ in l:
+                if isinstance(x_, List):
+                    c += word_count(x_)
+                else:
+                    c += len(x_.split(" "))
+            return c
+
+        srcs = [x["source"] for x in inputs]
+        refs = [x["references"] for x in inputs]
+        hypos = [x["hypothesis"] for x in inputs]
+
+        srcs_wc = word_count(srcs)
+        refs_wc = word_count(refs)
+        hypos_wc = word_count(hypos)
+
+        return {
+            "date:": strftime("%Y-%m-%d %H:%M:%S", gmtime()),
+            "user": "placeholder",
+            "metrics": metrics,
+            "src_tokens": srcs_wc,
+            "refs_wc": refs_wc,
+            "hypos_wc": hypos_wc
+        }
+
     def score(self, inputs: List[Dict], metrics=None):
         # assert self._config is not None, "You should use load_config first to load metric configurations."
 
@@ -50,6 +80,13 @@ class Client:
             for metric in metrics:
                 assert metric in self._valid_metrics, "Your have entered invalid metric, please check."
 
+        # First record the request
+        metadata = self.log_request(inputs, metrics)
+        response = requests.post(url=self._record_end_point, json=json.dumps(metadata))
+        if response.status_code != 200:
+            raise RuntimeError("Internal server error.")
+        print(f"Your request has been sent.")
+
         inputs_len = len(inputs)
 
         final_score_dic = {}
@@ -59,7 +96,7 @@ class Client:
                 "inputs": inputs,
                 "metrics": ["bleu"]
             }
-            response = requests.post(url=self._end_point, json=json.dumps(data))
+            response = requests.post(url=self._score_end_point, json=json.dumps(data))
             rjson = response.json()
             scores = rjson["scores"]
             assert len(scores["bleu"]) == inputs_len
@@ -71,7 +108,7 @@ class Client:
                 "inputs": inputs,
                 "metrics": ["chrf"]
             }
-            response = requests.post(url=self._end_point, json=json.dumps(data))
+            response = requests.post(url=self._score_end_point, json=json.dumps(data))
             rjson = response.json()
             scores = rjson["scores"]
             assert len(scores["chrf"]) == inputs_len
@@ -86,7 +123,7 @@ class Client:
                 "metrics": metrics
             }
 
-            response = requests.post(url=self._end_point, json=json.dumps(data))
+            response = requests.post(url=self._score_end_point, json=json.dumps(data))
             rjson = response.json()
             scores = rjson["scores"]
 
