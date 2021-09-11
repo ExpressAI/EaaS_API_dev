@@ -66,8 +66,8 @@ class Client:
             "user": "placeholder",
             "metrics": metrics,
             "src_tokens": srcs_wc,
-            "refs_wc": refs_wc,
-            "hypos_wc": hypos_wc
+            "refs_tokens": refs_wc,
+            "hypos_tokens": hypos_wc
         }
 
     def score(self, inputs: List[Dict], metrics=None):
