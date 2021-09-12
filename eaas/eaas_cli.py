@@ -34,7 +34,7 @@ if __name__ == '__main__':
     metrics_list = [metric for metric in metrics.split(",")]
 
     client = Client()
-    score_dic = client.score(inputs, metrics_list)
+    score_dic = client.score(inputs, metrics_list, args.lang)
     print(score_dic)
 
 """
