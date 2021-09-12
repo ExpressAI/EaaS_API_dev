@@ -70,8 +70,12 @@ class Client:
             "hypos_tokens": hypos_wc
         }
 
-    def score(self, inputs: List[Dict], metrics=None):
-        # assert self._config is not None, "You should use load_config first to load metric configurations."
+    def score(self, inputs: List[Dict], metrics=None, lang="en"):
+        assert self._config is not None, "You should use load_config first to load metric configurations."
+
+        # Add the language property
+        for k in self._config:
+            self._config[k]["lang"] = lang
 
         if metrics is None:
             metrics = self._valid_metrics

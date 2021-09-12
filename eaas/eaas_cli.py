@@ -21,7 +21,8 @@ if __name__ == '__main__':
                         help="Input texts to be evaluated")
     parser.add_argument('--metrics', type=str, required=True,
                         help="Metrics to be used, separated by commas")
-
+    parser.add_argument("--lang", type=str, default="en",
+                        help="Language of hypotheses")
     args = parser.parse_args()
 
     path_inputs = args.path_inputs
@@ -37,5 +38,5 @@ if __name__ == '__main__':
     print(score_dic)
 
 """
-python eaas_cli.py --path_inputs ../tests/inputs/multi_references.jsonl --metrics bleu,chrf
+python eaas_cli.py --path_inputs ../tests/inputs/multi_references.jsonl --metrics bleu,chrf --lang en
 """
