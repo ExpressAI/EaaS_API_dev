@@ -43,6 +43,7 @@ class Client:
 
     def log_request(self, inputs, metrics):
         """ Log the metadata of this request. """
+
         def word_count(l):
             """ count words in a list (or list of list)"""
             c = 0
@@ -101,12 +102,17 @@ class Client:
                 "metrics": ["bleu"],
                 "config": self._config
             }
-            response = requests.post(url=self._score_end_point, json=json.dumps(data))
+            response = requests.post(
+                url=self._score_end_point,
+                json=json.dumps(data),
+            )
+
             rjson = response.json()
             scores = rjson["scores"]
             assert len(scores["bleu"]) == inputs_len
             final_score_dic["bleu"] = scores["bleu"]
             final_score_dic["corpus_bleu"] = scores["corpus_bleu"]
+            metrics.remove("bleu")
 
         if "chrf" in metrics:
             data = {
@@ -114,12 +120,16 @@ class Client:
                 "metrics": ["chrf"],
                 "config": self._config
             }
-            response = requests.post(url=self._score_end_point, json=json.dumps(data))
+            response = requests.post(
+                url=self._score_end_point,
+                json=json.dumps(data)
+            )
             rjson = response.json()
             scores = rjson["scores"]
             assert len(scores["chrf"]) == inputs_len
             final_score_dic["chrf"] = scores["chrf"]
             final_score_dic["corpus_chrf"] = scores["corpus_chrf"]
+            metrics.remove("chrf")
 
         # Deal with the inputs 100 samples at a time
         score_dic = defaultdict(list)
@@ -130,7 +140,10 @@ class Client:
                 "config": self._config
             }
 
-            response = requests.post(url=self._score_end_point, json=json.dumps(data))
+            response = requests.post(
+                url=self._score_end_point,
+                json=json.dumps(data)
+            )
             rjson = response.json()
             scores = rjson["scores"]
 

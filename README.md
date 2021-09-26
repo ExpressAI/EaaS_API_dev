@@ -17,6 +17,7 @@ To use the API, run the following.
 ```python
 from eaas import Client
 client = Client()
+client.load_config("config.json")
 
 # To use this API for scoring, you need to format your input as list of dictionary. 
 # Each dictionary consists of `source` (string, optional), `references` (list of string, optional) 
