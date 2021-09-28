@@ -14,13 +14,13 @@
     "smooth_value": null,
     "force": false,
     "lowercase": false,
-    "tokenize": "13a",
     "use_effective_order": false
   },
   "chrf": {
     "char_order": 6,
     "word_order": 0,
     "beta": 2,
+    "lowercase": false,
     "remove_whitespace": true,
     "eps_smoothing": false
   },
