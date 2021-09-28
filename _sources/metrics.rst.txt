@@ -143,7 +143,7 @@ BLEU
 .. important::
     Reference: `BLEU: a Method for Automatic Evaluation of Machine Translation <https://aclanthology.org/P02-1040.pdf>`__
 
-* Supported Language: All
+* Supported Languages: All
 
 
 ******************************
@@ -152,7 +152,7 @@ CHRF
 .. important::
     Reference: `chrF: character n-gram F-score for automatic MT evaluation <https://aclanthology.org/W15-3049/>`__
 
-* Supported Language: All
+* Supported Languages: All
 
 ******************************
 COMET
@@ -162,6 +162,21 @@ COMET
 
 * Supported Languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.
 
+******************************
+MoverScore
+******************************
+.. important::
+    Reference: `MoverScore: Text Generation Evaluating with Contextualized Embeddings and Earth Mover Distance <https://arxiv.org/abs/1909.02622>`__
+
+* Supported Languages: English
+
+******************************
+PRISM
+******************************
+.. important::
+    Reference: `Automatic Machine Translation Evaluation in Many Languages via Zero-Shot Paraphrasing <https://arxiv.org/abs/2004.14564>`__
+
+* Supported Languages: Albanian, Arabic, Bengali, Bulgarian, Catalan; Valencian, Chinese, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Finnish, French, German, Greek, Modern, Hebrew (modern), Hungarian, Indonesian, Italian, Japanese, Kazakh, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Moldavan, Russian, Serbian, Slovak, Slovene, Spanish; Castilian, Swedish, Turkish, Ukrainian, Vietnamese
 
 ******************************
 ROUGE
