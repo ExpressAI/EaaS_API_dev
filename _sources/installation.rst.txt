@@ -25,7 +25,8 @@ To use the API, run the following as a simple example::
               "hypothesis": "This is the generated hypothesis."}]
    metrics = ["bleu", "chrf"] # Can be None for simplicity if you consider using all metrics
 
-   score_dic = client.score(inputs, metrics) # inputs is a list of Dict, metrics is metric list
+   score_dic = client.score(inputs, metrics, lang="en")
+   # `inputs` is a list of Dict, `metrics` is metric list, `lang` is the two-letter code for language
 
 The output is like::
 

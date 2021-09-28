@@ -205,7 +205,8 @@
            <span class="s2">"hypothesis"</span><span class="p">:</span> <span class="s2">"This is the generated hypothesis."</span><span class="p">}]</span>
 <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"bleu"</span><span class="p">,</span> <span class="s2">"chrf"</span><span class="p">]</span> <span class="c1"># Can be None for simplicity if you consider using all metrics</span>
 
-<span class="n">score_dic</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span> <span class="c1"># inputs is a list of Dict, metrics is metric list</span>
+<span class="n">score_dic</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">"en"</span><span class="p">)</span>
+<span class="c1"># `inputs` is a list of Dict, `metrics` is metric list, `lang` is the two-letter code for language</span>
 </pre></div>
 </div>
 <p>The output is like:</p>
