@@ -19,8 +19,29 @@ def read_jsonlines_to_list(file_name):
 class TestMetrics(unittest.TestCase):
     def test_api(self):
         client = Client()
-        # client.load_config("config.json")
+        client.load_config("config.json")
 
         input_file = os.path.join(curr_dir, "inputs", "multi_references.jsonl")
         inputs = read_jsonlines_to_list(input_file)
         res = client.score(inputs)
+        print(res)
+
+    def test_multilingual(self):
+        client = Client()
+        client.load_config("config.json")
+
+        for lang in ["en", "fr", "zh"]:
+            # Single ref
+            print(f"****** LANG: {lang} ******")
+            print("For single reference")
+            input_file = os.path.join(curr_dir, "inputs", f"{lang}_single_ref_tiny.jsonl")
+            inputs = read_jsonlines_to_list(input_file)
+            res = client.score(inputs, metrics=None, lang=lang)
+            print(res)
+
+            # Multi ref
+            print(f"For multiple references")
+            input_file = os.path.join(curr_dir, "inputs", f"{lang}_multi_ref_tiny.jsonl")
+            inputs = read_jsonlines_to_list(input_file)
+            res = client.score(inputs, metrics=None, lang=lang)
+            print(res)

@@ -5,6 +5,7 @@ import warnings
 from tqdm import trange
 from collections import defaultdict
 import os
+import sys
 from time import gmtime, strftime
 
 BATCH_SIZE = 100
@@ -108,6 +109,11 @@ class Client:
             )
 
             rjson = response.json()
+            if response.status_code != 200:
+                print(f"[Error on metric: {rjson['metric']}]")
+                print(f"[Error Message]: {rjson['message']}")
+                sys.exit(0)
+
             scores = rjson["scores"]
             assert len(scores["bleu"]) == inputs_len
             final_score_dic["bleu"] = scores["bleu"]
@@ -124,7 +130,13 @@ class Client:
                 url=self._score_end_point,
                 json=json.dumps(data)
             )
+
             rjson = response.json()
+            if response.status_code != 200:
+                print(f"[Error on metric: {rjson['metric']}]")
+                print(f"[Error Message]: {rjson['message']}")
+                sys.exit(0)
+
             scores = rjson["scores"]
             assert len(scores["chrf"]) == inputs_len
             final_score_dic["chrf"] = scores["chrf"]
@@ -144,7 +156,13 @@ class Client:
                 url=self._score_end_point,
                 json=json.dumps(data)
             )
+
             rjson = response.json()
+            if response.status_code != 200:
+                print(f"[Error on metric: {rjson['metric']}]")
+                print(f"[Error Message]: {rjson['message']}")
+                sys.exit(0)
+
             scores = rjson["scores"]
 
             for k, v in scores.items():
