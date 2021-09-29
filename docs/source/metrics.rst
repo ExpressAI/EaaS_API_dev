@@ -74,7 +74,7 @@ Thai (th),
 Tagalog (tl),
 Ukrainian (uk),
 Urdu (ur),
-Xhosa (xh), 
+Xhosa (xh),
 Galician (gl),
 Slovene (sl)
 
@@ -236,4 +236,27 @@ ROUGE
 ******************************
 .. important::
     Reference: `ROUGE: A Package for Automatic Evaluation of Summaries <https://aclanthology.org/W04-1013/>`__
+
+* Supported Languages:
+Bengali (bn),
+Hindi (hi),
+Turkish (tr),
+Arabic (ar),
+Danish (da),
+Dutch (nl),
+English (en),
+Finnish (fi),
+French (fr),
+German (de),
+Hungarian (hu),
+Italian (it),
+Norwegian (nb),
+Portuguese (pt),
+Romanian (ro),
+Russian (ru),
+Spanish (es),
+Swedish (sv)
+Chinese (zh)
+Thai (th),
+Japanese (ja)
 
