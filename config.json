@@ -33,7 +33,8 @@
   "mover_score": {
     "remove_stopwords": true,
     "n_gram": 1,
-    "remove_subwords": true
+    "remove_subwords": true,
+    "idf": false
   },
   "prism": {
     "temperature": 1.0
