@@ -31,8 +31,8 @@ inputs = [{"source": "This is the source.",
            "hypothesis": "This is the generated hypothesis."}]
 metrics = ["bleu", "chrf"] # Can be None for simplicity if you consider using all metrics
 
-score_dic = client.score(inputs, metrics, lang="en") 
-# inputs is a list of Dict, metrics is metric list, lang is the two-letter code language
+score_dic = client.score(inputs, task="sum", metrics=metrics, lang="en") 
+# inputs is a list of Dict, task is the name of task, metrics is metric list, lang is the two-letter code language
 ```
 
 

@@ -72,7 +72,7 @@ class Client:
             "hypos_tokens": hypos_wc
         }
 
-    def score(self, inputs: List[Dict], metrics=None, lang="en"):
+    def score(self, inputs: List[Dict], task="sum", metrics=None, lang="en"):
         assert self._config is not None, "You should use load_config first to load metric configurations."
 
         # Add the language property
@@ -96,12 +96,23 @@ class Client:
         inputs_len = len(inputs)
 
         final_score_dic = {}
+
+        def attr_in_dic(_dic):
+            _flag = False
+            for _k in _dic:
+                if "attr" in _k:
+                    _flag = True
+            return _flag
+
         # First deal with BLEU and CHRF
         if "bleu" in metrics:
+
             data = {
                 "inputs": inputs,
                 "metrics": ["bleu"],
-                "config": self._config
+                "config": self._config,
+                "task": task,
+                "cal_attributes": not attr_in_dic(final_score_dic)
             }
             response = requests.post(
                 url=self._score_end_point,
@@ -118,13 +129,20 @@ class Client:
             assert len(scores["bleu"]) == inputs_len
             final_score_dic["bleu"] = scores["bleu"]
             final_score_dic["corpus_bleu"] = scores["corpus_bleu"]
+            for k, v in scores.items():
+                if "attr" in k:
+                    final_score_dic[k] = v
+                    final_score_dic[f"corpus_{k}"] = sum(v) / len(v)
+
             metrics.remove("bleu")
 
         if "chrf" in metrics:
             data = {
                 "inputs": inputs,
                 "metrics": ["chrf"],
-                "config": self._config
+                "config": self._config,
+                "task": task,
+                "cal_attributes": not attr_in_dic(final_score_dic)
             }
             response = requests.post(
                 url=self._score_end_point,
@@ -141,6 +159,11 @@ class Client:
             assert len(scores["chrf"]) == inputs_len
             final_score_dic["chrf"] = scores["chrf"]
             final_score_dic["corpus_chrf"] = scores["corpus_chrf"]
+            for k, v in scores.items():
+                if "attr" in k:
+                    final_score_dic[k] = v
+                    final_score_dic[f"corpus_{k}"] = sum(v) / len(v)
+
             metrics.remove("chrf")
 
         # Deal with the inputs 100 samples at a time
@@ -149,7 +172,9 @@ class Client:
             data = {
                 "inputs": inputs[i: i + BATCH_SIZE],
                 "metrics": metrics,
-                "config": self._config
+                "config": self._config,
+                "task": task,
+                "cal_attributes": not attr_in_dic(final_score_dic)
             }
 
             response = requests.post(
@@ -175,6 +200,8 @@ class Client:
             assert len(v) == inputs_len
             final_score_dic[k] = v
             final_score_dic[f"corpus_{k}"] = sum(v) / len(v)
+
+        # TODO: Reformat the returned dict
 
         return final_score_dic
 
