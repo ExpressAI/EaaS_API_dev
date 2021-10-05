@@ -201,9 +201,20 @@ class Client:
             final_score_dic[k] = v
             final_score_dic[f"corpus_{k}"] = sum(v) / len(v)
 
-        # TODO: Reformat the returned dict
+        # Reformat the returned dict
+        sample_level = [{}] * len(inputs)
+        corpus_level = {}
+        reformatted_final_score_dic = {}
+        for k, v in final_score_dic.items():
+            if "corpus" in k:
+                corpus_level[k] = v
+            else:
+                for i in range(len(inputs)):
+                    sample_level[i][k] = v[i]
+        reformatted_final_score_dic["sample_level"] = sample_level
+        reformatted_final_score_dic["corpus_level"] = corpus_level
 
-        return final_score_dic
+        return reformatted_final_score_dic
 
     def signature(self):
         pass

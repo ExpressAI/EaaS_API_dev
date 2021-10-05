@@ -39,15 +39,35 @@ score_dic = client.score(inputs, task="sum", metrics=metrics, lang="en")
 
 The output is like
 ```
+# sample_level is a list of dict, corpus_level is a dict
 {
-  'bleu': [32.46679154750991],  # Sample-level scores. A list of scores one for each sample.
-  'corpus_bleu': 32.46679154750991, # Corpus-level score.
-  'chrf': [38.56890099861521],
-  'corpus_chrf': 38.56890099861521
+    'sample_level': [
+        {'bleu': 32.46679154750991,
+         'attr_compression': 1.2,
+         'attr_copy_len': 2.0,
+         'attr_coverage': 0.8,
+         'attr_density': 2.0,
+         'attr_hypothesis_len': 5,
+         'attr_novelty': 0.5,
+         'attr_repetition': 0.0,
+         'attr_source_len': 6,
+         'chrf': 38.56890099861521}
+    ],
+    'corpus_level': {
+        'corpus_bleu': 32.46679154750991,
+        'corpus_attr_compression': 1.2,
+        'corpus_attr_copy_len': 2.0,
+        'corpus_attr_coverage': 0.8,
+        'corpus_attr_density': 2.0,
+        'corpus_attr_hypothesis_len': 5.0,
+        'corpus_attr_novelty': 0.5,
+        'corpus_attr_repetition': 0.0,
+        'corpus_attr_source_len': 6.0,
+        'corpus_chrf': 38.56890099861521
+    }
 }
 ```
-## Short-term TODO
-- [ ] Write config.json, add backend support.
+
 
 ## Long-term TODO
 - [ ] 完善功能

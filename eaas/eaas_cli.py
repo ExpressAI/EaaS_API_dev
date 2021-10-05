@@ -21,6 +21,8 @@ if __name__ == '__main__':
                         help="Input texts to be evaluated")
     parser.add_argument('--metrics', type=str, required=True,
                         help="Metrics to be used, separated by commas")
+    parser.add_argument("--task", type=str, default="sum",
+                        help="The task of interest, can be sum/mt.")
     parser.add_argument("--lang", type=str, default="en",
                         help="Language of hypotheses")
     args = parser.parse_args()
