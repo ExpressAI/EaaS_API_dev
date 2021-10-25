@@ -202,7 +202,9 @@ class Client:
             final_score_dic[f"corpus_{k}"] = sum(v) / len(v)
 
         # Reformat the returned dict
-        sample_level = [{}] * len(inputs)
+        sample_level = []
+        for i in range(len(inputs)):
+            sample_level.append({})
         corpus_level = {}
         reformatted_final_score_dic = {}
         for k, v in final_score_dic.items():
@@ -211,6 +213,7 @@ class Client:
             else:
                 for i in range(len(inputs)):
                     sample_level[i][k] = v[i]
+
         reformatted_final_score_dic["sample_level"] = sample_level
         reformatted_final_score_dic["corpus_level"] = corpus_level
 
