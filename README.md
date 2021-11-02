@@ -15,7 +15,7 @@ pip install eaas
 To use the API, You should go through the following two steps.
 - Step 1: You should load the default configurations and make modifications based on your own needs.
 ```python
-from eaas.config import Config
+from eaas import Config
 config = Config()
 # To see the metrics we support, run
 print(config.metrics())
