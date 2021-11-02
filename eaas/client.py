@@ -1,12 +1,14 @@
-from typing import List, Dict
-import requests
 import json
-import warnings
-from tqdm import trange
-from collections import defaultdict
-import os
 import sys
+import warnings
+from collections import defaultdict
 from time import gmtime, strftime
+from typing import List, Dict
+
+import requests
+from tqdm import trange
+
+from eaas.config import Config
 
 BATCH_SIZE = 100
 
@@ -28,15 +30,15 @@ class Client:
             "mover_score",
             "prism",
             "prism_qe",
-            "rouge"
+            "rouge1",
+            "rouge2",
+            "rougeL"
         ]
         self._config = None
 
-    def load_config(self, config_file="config.json"):
-        assert os.path.exists(config_file), "The config file does not exist."
-        with open(config_file, "r") as f:
-            config = json.loads(f.read())
-        self._config = config
+    def load_config(self, config: Config):
+        assert isinstance(config, Config), "You should pass a Config class defined in eaas.config"
+        self._config = config.to_dict()
 
     @property
     def metrics(self):

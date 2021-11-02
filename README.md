@@ -12,12 +12,29 @@ To install the API, simply run
 pip install eaas
 ```
 
-To use the API, run the following.
+To use the API, You should go through the following two steps.
+- Step 1: You should load the default configurations and make modifications based on your own needs.
+```python
+from eaas.config import Config
+config = Config()
+# To see the metrics we support, run
+print(config.metrics())
+# dict_keys(['bart_score_summ', 'bart_score_mt', 'bert_score', 'bleu', 'chrf', 'comet', 'comet_qe', 'mover_score', 'prism', 'prism_qe', 'rouge1', 'rouge2', 'rougeL'])
 
+# To see the default configuration of a metric, run
+print(config.bleu.to_dict())
+# {'smooth_method': 'exp', 'smooth_value': None, 'force': False, 'lowercase': False, 'use_effective_order': False}
+
+# To modify the config, run
+config.bleu.set_property("smooth_method", "floor")
+print(config.bleu.to_dict())
+# {'smooth_method': 'floor', 'smooth_value': None, 'force': False, 'lowercase': False, 'use_effective_order': False}
+```
+- Step 2: Initialize the client and send your inputs.
 ```python
 from eaas import Client
 client = Client()
-client.load_config("config.json")
+client.load_config(config)  # The config you have created above
 
 # To use this API for scoring, you need to format your input as list of dictionary. 
 # Each dictionary consists of `source` (string, optional), `references` (list of string, optional) 
