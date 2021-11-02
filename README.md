@@ -13,7 +13,7 @@ pip install eaas
 ```
 
 To use the API, You should go through the following two steps.
-- Step 1: You should load the default configurations and make modifications based on your own needs.
+- **Step 1**: You should load the default configurations and make modifications based on your own needs.
 ```python
 from eaas import Config
 config = Config()
@@ -30,7 +30,7 @@ config.bleu.set_property("smooth_method", "floor")
 print(config.bleu.to_dict())
 # {'smooth_method': 'floor', 'smooth_value': None, 'force': False, 'lowercase': False, 'use_effective_order': False}
 ```
-- Step 2: Initialize the client and send your inputs.
+- **Step 2**: Initialize the client and send your inputs.
 ```python
 from eaas import Client
 client = Client()
