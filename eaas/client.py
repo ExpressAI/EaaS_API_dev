@@ -17,6 +17,8 @@ class Client:
     def __init__(self):
         """ A client wrapper """
         # self.end_point = "http://18.224.144.134/"
+        # self._record_end_point = "http://piaget.lti.cs.cmu.edu:6666/record"
+        # self._score_end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
         self._record_end_point = "http://clio.lti.cs.cmu.edu:6666/record"
         self._score_end_point = "http://clio.lti.cs.cmu.edu:6666/score"
         self._valid_metrics = [

@@ -1,7 +1,7 @@
 # EaaS_API
 
 ## Documentation
-Documentation at https://expressai.github.io/EaaS_API_dev/. Some references for writing docs can refer to
+Documentation at https://expressai.github.io/autoeval/. Some references for writing docs can refer to
 - https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-primer
 - https://sphinx-tutorial.readthedocs.io/step-1/
 - https://sphinx-themes.org/sample-sites/furo/
