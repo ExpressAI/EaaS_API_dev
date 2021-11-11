@@ -19,7 +19,7 @@ from eaas import Config
 config = Config()
 # To see the metrics we support, run
 print(config.metrics())
-# dict_keys(['bart_score_summ', 'bart_score_mt', 'bert_score', 'bleu', 'chrf', 'comet', 'comet_qe', 'mover_score', 'prism', 'prism_qe', 'rouge1', 'rouge2', 'rougeL'])
+# dict_keys(['bart_score_summ', 'bart_score_mt', 'bart_score_cnn_hypo_ref', 'bert_score', 'bleu', 'chrf', 'comet', 'comet_qe', 'mover_score', 'prism', 'prism_qe', 'rouge1', 'rouge2', 'rougeL'])
 
 # To see the default configuration of a metric, run
 print(config.bleu.to_dict())
