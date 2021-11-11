@@ -20,6 +20,7 @@ class Config:
     def __init__(self):
         self.bart_score_summ = BaseConfig()
         self.bart_score_mt = BaseConfig()
+        self.bart_score_cnn_hypo_ref = BaseConfig()
         self.bert_score = BaseConfig(**{"idf": False, "rescale_with_baseline": False})
         self.bleu = BaseConfig(**{
             "smooth_method": "exp",

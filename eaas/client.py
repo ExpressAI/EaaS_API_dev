@@ -22,6 +22,7 @@ class Client:
         self._record_end_point = "http://clio.lti.cs.cmu.edu:6666/record"
         self._score_end_point = "http://clio.lti.cs.cmu.edu:6666/score"
         self._valid_metrics = [
+            "bart_score_cnn_hypo_ref",
             "bart_score_summ",
             "bart_score_mt",
             "bert_score",
