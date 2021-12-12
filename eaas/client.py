@@ -17,10 +17,10 @@ class Client:
     def __init__(self):
         """ A client wrapper """
         # self.end_point = "http://18.224.144.134/"
-        # self._record_end_point = "http://piaget.lti.cs.cmu.edu:6666/record"
-        # self._score_end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
-        self._record_end_point = "http://clio.lti.cs.cmu.edu:6666/record"
-        self._score_end_point = "http://clio.lti.cs.cmu.edu:6666/score"
+        self._record_end_point = "http://piaget.lti.cs.cmu.edu:6666/record"
+        self._score_end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
+        # self._record_end_point = "http://clio.lti.cs.cmu.edu:6666/record"
+        # self._score_end_point = "http://clio.lti.cs.cmu.edu:6666/score"
         self._valid_metrics = [
             "bart_score_cnn_hypo_ref",
             "bart_score_summ",
@@ -76,6 +76,127 @@ class Client:
             "refs_tokens": refs_wc,
             "hypos_tokens": hypos_wc
         }
+
+    # TODO: Beautify bleu, rouge1, rouge2, rougeL
+    def bleu(self, refs: List[List[str]], hypos: List[str], lang="en"):
+        assert self._config is not None, "You should use load_config first to load metric configurations."
+        # Add the language property
+        for k in self._config:
+            self._config[k]["lang"] = lang
+        inputs = []
+        for ref_list, hypo in zip(refs, hypos):
+            inputs.append({"source": "", "references": ref_list, "hypothesis": hypo})
+        data = {
+            "inputs": inputs,
+            "metrics": ["bleu"],
+            "config": self._config,
+            "task": "mt",
+            "cal_attributes": False
+        }
+        response = requests.post(
+            url=self._score_end_point,
+            json=json.dumps(data),
+        )
+
+        rjson = response.json()
+        if response.status_code != 200:
+            print(f"[Error on metric: {rjson['metric']}]")
+            print(f"[Error Message]: {rjson['message']}")
+            sys.exit(0)
+
+        scores = rjson["scores"]
+        assert len(scores["bleu"]) == len(inputs)
+        return scores
+
+    def rouge1(self, refs: List[List[str]], hypos: List[str], lang="en"):
+        assert self._config is not None, "You should use load_config first to load metric configurations."
+        # Add the language property
+        for k in self._config:
+            self._config[k]["lang"] = lang
+        inputs = []
+        for ref_list, hypo in zip(refs, hypos):
+            inputs.append({"source": "", "references": ref_list, "hypothesis": hypo})
+        data = {
+            "inputs": inputs,
+            "metrics": ["rouge1"],
+            "config": self._config,
+            "task": "sum",
+            "cal_attributes": False
+        }
+        response = requests.post(
+            url=self._score_end_point,
+            json=json.dumps(data),
+        )
+
+        rjson = response.json()
+        if response.status_code != 200:
+            print(f"[Error on metric: {rjson['metric']}]")
+            print(f"[Error Message]: {rjson['message']}")
+            sys.exit(0)
+
+        scores = rjson["scores"]
+        assert len(scores["rouge_1"]) == len(inputs)
+        return scores
+
+    def rouge2(self, refs: List[List[str]], hypos: List[str], lang="en"):
+        assert self._config is not None, "You should use load_config first to load metric configurations."
+        # Add the language property
+        for k in self._config:
+            self._config[k]["lang"] = lang
+        inputs = []
+        for ref_list, hypo in zip(refs, hypos):
+            inputs.append({"source": "", "references": ref_list, "hypothesis": hypo})
+        data = {
+            "inputs": inputs,
+            "metrics": ["rouge2"],
+            "config": self._config,
+            "task": "sum",
+            "cal_attributes": False
+        }
+        response = requests.post(
+            url=self._score_end_point,
+            json=json.dumps(data),
+        )
+
+        rjson = response.json()
+        if response.status_code != 200:
+            print(f"[Error on metric: {rjson['metric']}]")
+            print(f"[Error Message]: {rjson['message']}")
+            sys.exit(0)
+
+        scores = rjson["scores"]
+        assert len(scores["rouge_2"]) == len(inputs)
+        return scores
+
+    def rougeL(self, refs: List[List[str]], hypos: List[str], lang="en"):
+        assert self._config is not None, "You should use load_config first to load metric configurations."
+        # Add the language property
+        for k in self._config:
+            self._config[k]["lang"] = lang
+        inputs = []
+        for ref_list, hypo in zip(refs, hypos):
+            inputs.append({"source": "", "references": ref_list, "hypothesis": hypo})
+        data = {
+            "inputs": inputs,
+            "metrics": ["rougeL"],
+            "config": self._config,
+            "task": "sum",
+            "cal_attributes": False
+        }
+        response = requests.post(
+            url=self._score_end_point,
+            json=json.dumps(data),
+        )
+
+        rjson = response.json()
+        if response.status_code != 200:
+            print(f"[Error on metric: {rjson['metric']}]")
+            print(f"[Error Message]: {rjson['message']}")
+            sys.exit(0)
+
+        scores = rjson["scores"]
+        assert len(scores["rouge_l"]) == len(inputs)
+        return scores
 
     def score(self, inputs: List[Dict], task="sum", metrics=None, lang="en"):
         assert self._config is not None, "You should use load_config first to load metric configurations."

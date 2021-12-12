@@ -85,6 +85,27 @@ The output is like
 }
 ```
 
+## Support for Common metrics
+We support quick calculation for BLEU and ROUGE(1,2,L), see the following for usage.
+```python
+from eaas import Config, Client
+config = Config()
+client = Client()
+client.load_config(config) 
+
+references = [["This is the reference one for sample one.", "This is the reference two for sample one."],
+              ["This is the reference one for sample two.", "This is the reference two for sample two."]]
+hypothesis = ["This is the generated hypothesis for sample one.", 
+              "This is the generated hypothesis for sample two."]
+
+# Calculate BLEU
+client.bleu(references, hypothesis)
+
+# Calculate ROUGEs
+client.rouge1(references, hypothesis)
+client.rouge2(references, hypothesis)
+client.rougeL(references, hypothesis)
+```
 
 ## Long-term TODO
 - [ ] 完善功能
