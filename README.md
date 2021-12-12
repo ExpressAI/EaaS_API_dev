@@ -99,12 +99,12 @@ hypothesis = ["This is the generated hypothesis for sample one.",
               "This is the generated hypothesis for sample two."]
 
 # Calculate BLEU
-client.bleu(references, hypothesis)
+client.bleu(references, hypothesis, lang="en")
 
 # Calculate ROUGEs
-client.rouge1(references, hypothesis)
-client.rouge2(references, hypothesis)
-client.rougeL(references, hypothesis)
+client.rouge1(references, hypothesis, lang="en")
+client.rouge2(references, hypothesis, lang="en")
+client.rougeL(references, hypothesis, lang="en")
 ```
 
 ## Long-term TODO
