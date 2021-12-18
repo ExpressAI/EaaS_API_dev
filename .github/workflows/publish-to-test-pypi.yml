@@ -19,6 +19,7 @@ jobs:
         build
         --user
     - run: pip install -r requirements.txt        
+    - run: pip install wheel      
     - name: Build a binary wheel and a source tarball
       run: >-
         python setup.py sdist bdist_wheel --universal   
