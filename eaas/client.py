@@ -217,7 +217,7 @@ class Client:
         response = requests.post(url=self._record_end_point, json=json.dumps(metadata))
         if response.status_code != 200:
             raise RuntimeError("Internal server error.")
-        print(f"Your request has been sent.")
+        print(f"EaaS: Your request has been sent.", file=sys.stderr)
 
         inputs_len = len(inputs)
 
