@@ -184,7 +184,7 @@ class Client:
 
         rjson = response.json()
         if response.status_code != 200:
-            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
         scores = rjson["scores"]
         assert len(scores["rouge_l"]) == len(inputs)
