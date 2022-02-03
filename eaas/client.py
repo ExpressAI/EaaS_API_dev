@@ -100,7 +100,7 @@ class Client:
 
         rjson = response.json()
         if response.status_code != 200:
-            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
         scores = rjson["scores"]
         assert len(scores["bleu"]) == len(inputs)
@@ -128,7 +128,7 @@ class Client:
 
         rjson = response.json()
         if response.status_code != 200:
-            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
         scores = rjson["scores"]
         assert len(scores["rouge_1"]) == len(inputs)
@@ -156,7 +156,7 @@ class Client:
 
         rjson = response.json()
         if response.status_code != 200:
-            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+            raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
         scores = rjson["scores"]
         assert len(scores["rouge_2"]) == len(inputs)
@@ -239,7 +239,7 @@ class Client:
 
             rjson = response.json()
             if response.status_code != 200:
-                raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+                raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
             scores = rjson["scores"]
             assert len(scores["bleu"]) == inputs_len
@@ -267,7 +267,7 @@ class Client:
 
             rjson = response.json()
             if response.status_code != 200:
-                raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+                raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
             scores = rjson["scores"]
             assert len(scores["chrf"]) == inputs_len
@@ -298,7 +298,7 @@ class Client:
 
             rjson = response.json()
             if response.status_code != 200:
-                raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']")
+                raise ConnectionError(f"[Error on metric: {rjson['metric']}]\n[Error Message]: {rjson['message']}")
 
             scores = rjson["scores"]
 
