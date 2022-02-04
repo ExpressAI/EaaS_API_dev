@@ -21,7 +21,9 @@ class Config:
         self.bart_score_summ = BaseConfig()
         self.bart_score_mt = BaseConfig()
         self.bart_score_cnn_hypo_ref = BaseConfig()
-        self.bert_score = BaseConfig(**{"idf": False, "rescale_with_baseline": False})
+        self.bert_score_p = BaseConfig(**{"idf": False, "rescale_with_baseline": False})
+        self.bert_score_r = BaseConfig(**{"idf": False, "rescale_with_baseline": False})
+        self.bert_score_f = BaseConfig(**{"idf": False, "rescale_with_baseline": False})
         self.bleu = BaseConfig(**{
             "smooth_method": "exp",
             "smooth_value": None,
