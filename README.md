@@ -85,6 +85,27 @@ The output is like
 }
 ```
 
+## Supported Metrics
+Currently, EaaS supports the following metrics:
+```
+bart_score_cnn_hypo_ref
+bart_score_summ
+bart_score_mt
+bert_score_p
+bert_score_r
+bert_score_f
+bleu
+chrf
+comet
+comet_qe
+mover_score
+prism
+prism_qe
+rouge1
+rouge2
+rougeL
+```
+
 ## Support for Common metrics
 We support quick calculation for BLEU and ROUGE(1,2,L), see the following for usage.
 ```python
