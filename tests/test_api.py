@@ -42,8 +42,30 @@ class TestMetrics(unittest.TestCase):
             print(res)
 
             # Multi ref
+            if lang != "en":
+                # Moverscore does not support languages other than English
+                metrics = [
+                    "bart_score_cnn_hypo_ref",
+                    "bart_score_summ",
+                    "bart_score_mt",
+                    "bert_score_p",
+                    "bert_score_r",
+                    "bert_score_f",
+                    "bleu",
+                    "chrf",
+                    "comet",
+                    "comet_qe",
+                    "prism",
+                    "prism_qe",
+                    "rouge1",
+                    "rouge2",
+                    "rougeL"
+                ]
+            else:
+                metrics = None
+
             print(f"For multiple references")
             input_file = os.path.join(curr_dir, "inputs", f"{lang}_multi_ref_tiny.jsonl")
             inputs = read_jsonlines_to_list(input_file)
-            res = client.score(inputs, task="sum", metrics=None, lang=lang)
+            res = client.score(inputs, task="sum", metrics=metrics, lang=lang)
             print(res)
