@@ -59,27 +59,27 @@ The output is like
 # sample_level is a list of dict, corpus_level is a dict
 {
     'sample_level': [
-        {'bleu': 32.46679154750991,
-         'attr_compression': 1.2,
-         'attr_copy_len': 2.0,
-         'attr_coverage': 0.8,
-         'attr_density': 2.0,
-         'attr_hypothesis_len': 5,
-         'attr_novelty': 0.5,
-         'attr_repetition': 0.0,
-         'attr_source_len': 6,
-         'chrf': 38.56890099861521}
-    ],
+        {'bleu': 32.46679154750991, 
+        'attr_compression': 0.8333333333333334, 
+        'attr_copy_len': 2.0, 
+        'attr_coverage': 0.6666666666666666, 
+        'attr_density': 1.6666666666666667, 
+        'attr_hypothesis_len': 6, 
+        'attr_novelty': 0.6, 
+        'attr_repetition': 0.0, 
+        'attr_source_len': 5, 
+        'chrf': 38.56890099861521}
+    ], 
     'corpus_level': {
-        'corpus_bleu': 32.46679154750991,
-        'corpus_attr_compression': 1.2,
-        'corpus_attr_copy_len': 2.0,
-        'corpus_attr_coverage': 0.8,
-        'corpus_attr_density': 2.0,
-        'corpus_attr_hypothesis_len': 5.0,
-        'corpus_attr_novelty': 0.5,
-        'corpus_attr_repetition': 0.0,
-        'corpus_attr_source_len': 6.0,
+        'corpus_bleu': 32.46679154750991, 
+        'corpus_attr_compression': 0.8333333333333334, 
+        'corpus_attr_copy_len': 2.0, 
+        'corpus_attr_coverage': 0.6666666666666666, 
+        'corpus_attr_density': 1.6666666666666667, 
+        'corpus_attr_hypothesis_len': 6.0, 
+        'corpus_attr_novelty': 0.6, 
+        'corpus_attr_repetition': 0.0, 
+        'corpus_attr_source_len': 5.0, 
         'corpus_chrf': 38.56890099861521
     }
 }

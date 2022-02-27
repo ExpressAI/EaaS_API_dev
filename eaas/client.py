@@ -4,6 +4,7 @@ import warnings
 from collections import defaultdict
 from time import gmtime, strftime
 from typing import List, Dict
+import copy
 
 import requests
 from tqdm import trange
@@ -200,7 +201,7 @@ class Client:
             self._config[k]["lang"] = lang
 
         if metrics is None:
-            metrics = self._valid_metrics
+            metrics = copy.deepcopy(self._valid_metrics)
             warnings.warn("You didn't specify the metrics, will use all valid metrics by default.")
         else:
             for metric in metrics:
