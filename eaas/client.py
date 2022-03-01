@@ -18,10 +18,8 @@ class Client:
     def __init__(self):
         """ A client wrapper """
         # self.end_point = "http://18.224.144.134/"
-        self._record_end_point = "http://piaget.lti.cs.cmu.edu:6666/record"
-        self._score_end_point = "http://piaget.lti.cs.cmu.edu:6666/score"
-        # self._record_end_point = "http://clio.lti.cs.cmu.edu:6666/record"
-        # self._score_end_point = "http://clio.lti.cs.cmu.edu:6666/score"
+        self._record_end_point = "https://notebooksa.jarvislabs.ai/q-yr_VkZdJkNWZA1KFyHjP5HjPwgmaw3BXqXL8-9IU-truL4vpXUs31S2mIBaZXo/record"
+        self._score_end_point = "https://notebooksa.jarvislabs.ai/q-yr_VkZdJkNWZA1KFyHjP5HjPwgmaw3BXqXL8-9IU-truL4vpXUs31S2mIBaZXo/score"
         self._valid_metrics = [
             "bart_score_cnn_hypo_ref",
             "bart_score_summ",
