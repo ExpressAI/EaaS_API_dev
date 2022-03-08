@@ -24,7 +24,8 @@ class TestMetrics(unittest.TestCase):
 
         input_file = os.path.join(curr_dir, "inputs", "multi_references.jsonl")
         inputs = read_jsonlines_to_list(input_file)
-        res = client.score(inputs)
+        # res = client.score(inputs)
+        res = client.score(inputs, metrics=["bleu", "rouge2"])
         print(res)
 
     def test_multilingual(self):
@@ -38,7 +39,8 @@ class TestMetrics(unittest.TestCase):
             print("For single reference")
             input_file = os.path.join(curr_dir, "inputs", f"{lang}_single_ref_tiny.jsonl")
             inputs = read_jsonlines_to_list(input_file)
-            res = client.score(inputs, task="sum", metrics=None, lang=lang)
+            # res = client.score(inputs, task="sum", metrics=None, lang=lang)
+            res = client.score(inputs, task="sum", metrics=["bleu", "rouge2"], lang=lang)
             print(res)
 
             # Multi ref

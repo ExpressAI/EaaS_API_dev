@@ -191,7 +191,7 @@ class Client:
         assert len(scores["rouge_l"]) == len(inputs)
         return scores
 
-    def score(self, inputs: List[Dict], task="sum", metrics=None, lang="en"):
+    def score(self, inputs: List[Dict], task="sum", metrics=None, lang="en", cal_attributes=False):
         assert self._config is not None, "You should use load_config first to load metric configurations."
 
         # Add the language property
@@ -231,7 +231,7 @@ class Client:
                 "metrics": ["bleu"],
                 "config": self._config,
                 "task": task,
-                "cal_attributes": not attr_in_dic(final_score_dic)
+                "cal_attributes": (not attr_in_dic(final_score_dic)) if cal_attributes else False
             }
             response = requests.post(
                 url=self._score_end_point,
@@ -259,7 +259,7 @@ class Client:
                 "metrics": ["chrf"],
                 "config": self._config,
                 "task": task,
-                "cal_attributes": not attr_in_dic(final_score_dic)
+                "cal_attributes": (not attr_in_dic(final_score_dic)) if cal_attributes else False
             }
             response = requests.post(
                 url=self._score_end_point,
@@ -289,7 +289,7 @@ class Client:
                 "metrics": metrics,
                 "config": self._config,
                 "task": task,
-                "cal_attributes": not attr_in_dic(final_score_dic)
+                "cal_attributes": (not attr_in_dic(final_score_dic)) if cal_attributes else False
             }
 
             response = requests.post(
