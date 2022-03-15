@@ -1,4 +1,4 @@
-# EaaS_API
+# Evaluation-as-a-Service for NLP
 
 ## Documentation
 Documentation at https://expressai.github.io/autoeval/. Some references for writing docs can refer to
