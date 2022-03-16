@@ -47,21 +47,21 @@ class TestMetrics(unittest.TestCase):
             if lang != "en":
                 # Moverscore does not support languages other than English
                 metrics = [
-                    "bart_score_cnn_hypo_ref",
-                    "bart_score_summ",
-                    "bart_score_mt",
-                    "bert_score_p",
-                    "bert_score_r",
-                    "bert_score_f",
+                    # "bart_score_cnn_hypo_ref",
+                    # "bart_score_summ",
+                    # "bart_score_mt",
+                    # "bert_score_p",
+                    # "bert_score_r",
+                    # "bert_score_f",
                     "bleu",
-                    "chrf",
-                    "comet",
-                    "comet_qe",
-                    "prism",
-                    "prism_qe",
-                    "rouge1",
+                    # "chrf",
+                    # "comet",
+                    # "comet_qe",
+                    # "prism",
+                    # "prism_qe",
+                    # "rouge1",
                     "rouge2",
-                    "rougeL"
+                    # "rougeL"
                 ]
             else:
                 metrics = None
