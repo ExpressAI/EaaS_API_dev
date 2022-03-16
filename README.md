@@ -143,7 +143,7 @@ client.rouge2(references, hypothesis, task="sum", lang="en", cal_attributes=Fals
 client.rougeL(references, hypothesis, task="sum", lang="en", cal_attributes=False)
 ```
 
-## Support for prompts
+## Support for Prompts
 Prompts can sometimes improve the performance for certain metrics (See [this paper](https://arxiv.org/abs/2106.11520)). In our `client.score()` function, we support adding prompts to the source/hypothesis/references with both prefix position and suffix position. An example is shown below.
 
 ```python
