@@ -1,10 +1,13 @@
 # Evaluation-as-a-Service for NLP
+<p align="center">
+    <br>
+    <img src="./docs/Resources/figs/xx.png" width="400"/>
+    <br>
+  <a href="https://github.com/expressai/eaas_client/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/expressai/eaas_client" /></a>
+  <a href="https://pypi.org/project//"><img alt="PyPI" src="https://img.shields.io/pypi/v/eaas" /></a>
+  <a href=".github/workflows/ci.yml"><img alt="Integration Tests", src="https://github.com/expressai/eaas_client/actions/workflows/ci.yml/badge.svg?event=push" />
+</p>
 
-## Documentation
-Documentation at https://expressai.github.io/autoeval/. Some references for writing docs can refer to
-- https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-primer
-- https://sphinx-tutorial.readthedocs.io/step-1/
-- https://sphinx-themes.org/sample-sites/furo/
 
 ## Usage
 To install the API, simply run
