@@ -166,8 +166,14 @@ prompt_info = {
     "reference": {"prefix": "This is reference prefix", "suffix": "This is reference suffix"}
 }
 
+# adding this prompt info will automatically turn the inputs into
+# [{'source': 'This is source prefix This is the source. This is source suffix', 
+#   'references': ['This is reference prefix This is the reference one. This is reference suffix', 'This is reference prefix This is two. This is reference suffix'], 
+#   'hypothesis': 'This is hypothesis prefix This is the generated hypothesis. This is hypothesis suffix'}]
+
 # Here is a simpler example.
 # prompt_info = {"source": {"prefix": "This is prefix"}}
 
 score_dic = client.score(inputs, task="sum", metrics=["bart_score_summ"], lang="en", cal_attributes=False, **prompt_info)
+
 ``` 
